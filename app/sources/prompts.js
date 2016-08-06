@@ -5,7 +5,7 @@ module.exports = {
         {
             type: 'input',
             name: 'appName',
-            message: '\nEnter a name for your project \nThis name will be displayed below the app icon.\n',
+            message: 'Enter a name for your project.\n',
             validate: validator.validateAppName,
             default: this.appname, // Default to current folder name
             when: function () {
@@ -17,33 +17,15 @@ module.exports = {
         {
             type: 'input',
             name: 'description',
-            message: 'Enter a description for your project',
-            validate: validator.validateDescription,
-            default: ''
+            message: 'Enter a description for your project.\n',
+            validate: validator.validateDescription
         },
         //author name
         {
             type: 'input',
             name: 'userName',
-            message: 'The author\'s name? (for config files)',
-            validate: validator.validateUsername,
-            default: ''
-        },
-        // ionic css
-        {
-            type: 'list',
-            name: 'ionicCss',
-            message: '\nInclude styles as CSS or Sass\n',
-            choices: [
-                {
-                    name: 'Ionic CSS (faster, for starters)',
-                    value: true
-                },
-                {
-                    name: 'Ionic Sass (more flexible, for pros)',
-                    value: false
-                }
-            ]
+            message: 'Enter the author\'s name.\n',
+            validate: validator.validateUsername            
         }
     ]
 };

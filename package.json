@@ -1,7 +1,7 @@
 {
-  "name": "generator-es6-ionic",
+  "name": "generator-es6-gulp-angular",
   "version": "0.0.1",
-  "description": "Ionic generator that uses latest es6 features, gulp and webpack to bundle.",
+  "description": "Angular ES6 Gulp Generator that uses latest es6 features with components, gulp and webpack to bundle.",
   "files": [
     "app"
   ],
@@ -12,7 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "chalk": "^1.1.3",
-    "cordova-lib": "^6.3.0",
     "gulp": "^3.9.1",
     "underscore.string": "^3.3.4",
     "yeoman-generator": "^0.24.1",

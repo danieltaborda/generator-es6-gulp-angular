@@ -6,21 +6,21 @@ module.exports = {
         if (!appName) {
             return 'Project name cannot be empty';
         }
-        if (!/\w+/.test(appName)) {
+        if (!/^[a-zA-Z0-9_.]*$/.test(appName)) {
             return 'Project name should only consist of 0~9, a~z, A~Z, _, .';
         }   
         return true;
     },
 
     validateDescription: function (description) {
-        if (!/\w+/.test(description)) {
+        if (!/^[a-zA-Z0-9_ ]*$/.test(description)) {
             return 'Project name should only consist of 0~9, a~z, A~Z, _, .';
         }
         return true;
     },
 
     validateUsername: function (username) {
-        if (!/\w+/.test(username)) {
+        if (!/^[a-zA-Z0-9_ ]*$/.test(username)) {
             return 'Project name should only consist of 0~9, a~z, A~Z, _, .';
         }
         return true;
