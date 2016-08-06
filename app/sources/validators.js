@@ -12,11 +12,6 @@ module.exports = {
         return true;
     },
 
-    validateAppId: function (userInput) {
-        var pattern = /^[a-z][a-z0-9_]*(\.[a-z0-9_]+)+[0-9a-z_]$/i;
-        return pattern.test(userInput) ? true : 'Please enter a valid bundle identifier! E.g. com.company.project';
-    },
-
     validateDescription: function (description) {
         if (!/\w+/.test(description)) {
             return 'Project name should only consist of 0~9, a~z, A~Z, _, .';

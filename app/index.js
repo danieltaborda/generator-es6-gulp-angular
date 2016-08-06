@@ -5,7 +5,6 @@ var fs = require('fs');
 
 //local modules
 var utils = require('./sources/utils');
-var bowerConfig = require('./sources/bower-config');
 var prompts = require('./sources/prompts.js');
 
 module.exports = yeoman.Base.extend({
@@ -20,7 +19,7 @@ module.exports = yeoman.Base.extend({
 
     // say hello
     this.log(yosay(
-      'Welcome to the amazing ' + chalk.red('ES6-Ionic') + ' generator! version.' + this.pkg.version
+      'Welcome to the amazing ' + chalk.red('ES6-Gulp-Angular') + ' generator! version.' + this.pkg.version
     ));
 
     return this.prompt(prompts.main)
@@ -42,8 +41,6 @@ module.exports = yeoman.Base.extend({
       this.copy('package.json', 'package.json');
 
       // app files
-      // add random color to navbar
-      this.barColor = utils.barColor();
       this.copy('gulpfile.babel.js', 'gulpfile.babel.js');
       this.copy('webpack.config.js', 'webpack.config.js');
       this.copy('webpack.dev.config.js', 'webpack.dev.config.js');

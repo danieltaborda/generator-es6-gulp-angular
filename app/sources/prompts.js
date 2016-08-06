@@ -1,5 +1,4 @@
 var validator = require('./validators');
-var cordovaConfig = require('./cordoba-config');
 
 module.exports = {
     main: [
@@ -45,20 +44,6 @@ module.exports = {
                     value: false
                 }
             ]
-        },
-        // select platforms
-        {
-            type: 'checkbox',
-            name: 'platforms',
-            message: '\nSelect Cordova platforms \nOnly works if you have the platforms correctly set up.\n',
-            choices: cordovaConfig.platforms
-        },
-        // select plugins
-        {
-            type: 'checkbox',
-            name: 'plugins',
-            message: '\nSelect Cordova plugins \nInstall more later at any time.\n',
-            choices: cordovaConfig.plugins
-        },
+        }
     ]
 };
