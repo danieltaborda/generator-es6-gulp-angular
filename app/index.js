@@ -12,7 +12,7 @@ module.exports = yeoman.Base.extend({
   initializing: function () {
     // get package.json content
     this.pkg = require('../package.json');
-        
+
   },
 
   prompting: function () {
@@ -34,9 +34,9 @@ module.exports = yeoman.Base.extend({
   },
 
   writing: {
-    
+
     app: function () {
-     
+
       // dependencies
       this.copy('package.json', 'package.json');
 
@@ -48,7 +48,16 @@ module.exports = yeoman.Base.extend({
 
       // other files            
       this.directory('src', 'src');
+      //this.directory('generator', 'generator');
       this.directory('www', 'www');
+
+      // Copy all generator files      
+      this.generadorFolder = 'generator/component';
+      this.mkdir(this.generadorFolder);
+      this.fs.copy(
+        this.templatePath(this.generadorFolder + '/*.*'),
+        this.generadorFolder
+      );
 
       // dot files
       this.copy('babelrc', '.babelrc');
@@ -61,9 +70,9 @@ module.exports = yeoman.Base.extend({
 
   install: function () {
     // install npm, bower and save plugins/platforms
-    this.installDependencies({
-      npm: true
-    });
+    // this.installDependencies({
+    //   npm: true
+    // });
   },
 
   end: function () {

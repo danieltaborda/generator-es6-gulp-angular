@@ -1,11 +1,18 @@
 import gulp from 'gulp';
-import eslint from 'gulp-eslint';
+import webpack  from 'webpack';
 import path from 'path';
-import yargs    from 'yargs';
 import rename   from 'gulp-rename';
 import template from 'gulp-template';
-// import del from 'del';
-// import gutil    from 'gulp-util';
+import yargs    from 'yargs';
+import gutil    from 'gulp-util';
+import serve    from 'browser-sync';
+import del      from 'del';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+import colorsSupported      from 'supports-color';
+import historyApiFallback   from 'connect-history-api-fallback';
+import eslint from 'gulp-eslint';
+
 
 let root = 'src';
 
@@ -31,12 +38,70 @@ let paths = {
         path.join(__dirname, root, 'app/app.module.js')
     ],
     output: root,
+    blankTemplates: path.join(__dirname, 'generator', 'component/**/*.**'),  
     dest: path.join(__dirname, 'tmp'),
     lint: [
         'gulpfile.babel.js',
         resolveToApp('**/*.js')
     ]
 };
+
+// use webpack.config.js to build modules
+gulp.task('webpack', ['clean'], (cb) => {
+  const config = require('./webpack.dist.config');
+  config.entry.app = paths.entry;
+
+  webpack(config, (err, stats) => {
+    if(err)  {
+      throw new gutil.PluginError("webpack", err);
+    }
+
+    gutil.log("[webpack]", stats.toString({
+      colors: colorsSupported,
+      chunks: false,
+      errorDetails: true
+    }));
+
+    cb();
+  });
+});
+
+gulp.task('serve', () => {
+  const config = require('./webpack.dev.config');
+  config.entry.app = [
+    // this modules required to make HRM working
+    // it responsible for all this webpack magic
+    'webpack-hot-middleware/client?reload=true',
+    // application entry point
+  ].concat(paths.entry);
+
+  var compiler = webpack(config);
+
+  serve({
+    port: process.env.PORT || 3001,
+    open: true,
+    server: {baseDir: root},
+    middleware: [
+      historyApiFallback(),
+      webpackDevMiddleware(compiler, {
+        stats: {
+          colors: colorsSupported,
+          chunks: false,
+          modules: false
+        },
+        publicPath: config.output.publicPath
+      }),
+      webpackHotMiddleware(compiler)
+    ]
+  });
+});
+
+gulp.task('clean', (cb) => {
+  del([paths.dest]).then(function (paths) {
+    gutil.log("[clean]", paths);
+    cb();
+  })
+});
 
 // will run coding style checks
 gulp.task('lint', () => {
@@ -46,7 +111,6 @@ gulp.task('lint', () => {
     .pipe(eslint.format())
     .pipe(eslint.failOnError());
 });
-
 
 gulp.task('component', () => {
   const cap = (val) => {
@@ -67,6 +131,6 @@ gulp.task('component', () => {
     .pipe(gulp.dest(destPath));
 });
 
-gulp.task('watch', ['lint']);//serve
+gulp.task('watch', ['serve']);
 
 gulp.task('default', ['watch']);
