@@ -1,6 +1,12 @@
 var _s = require('underscore.string');
 
 module.exports = {  
+   // TODO: replace with underscore.string's decapitalize as soon as possible
+  // https://github.com/epeli/underscore.string/issues/286
+  decapitalize: function (string) {
+    return string[0].toLowerCase() + string.substr(1, string.length);
+  },
+  
   textToCamel: function (string) {
     string = string.replace('-', ' ');
     if (string.indexOf(' ') === -1) {
