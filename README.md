@@ -10,6 +10,7 @@ Inspired by
 
 * https://github.com/AngularClass/NG6-starter
 * https://github.com/jimmyho/ionic-webpack-es6-components
+* https://github.com/mwaylabs/generator-m-ionic
 
 ##Getting started
 ```
