@@ -9,16 +9,18 @@ Yeoman generator for angular applications that uses latest es6 features and comp
 ```
 # Clone into your computer
 > git clone https://github.com/EdsonAlcala/generator-es6-gulp-angular.git
+
 # Go to the main folder and in order to used in your computer run
 > npm link
-```
 
-Now the generator will be available in your computer, run
+# Now the generator will be available in your computer, run
 > yo es6-gulp-angular
+```
 
 ##Commands
+
 ```
 > gulp 
-
 > gulp component --name componentName
+
 ```
