@@ -1,18 +1,29 @@
-#es6 angular generator
+Note: There are still things to do, like adding tests, documentation, publish the generator, but you can use it locally (see instructions).
 
-Angular ES6 generator that uses latest es6 features and components, gulp and webpack to bundle.
+#ES6 Gulp Angular Generator 
+
+##Description
+Yeoman generator for angular applications that uses latest es6 features and components, gulp and webpack to bundle.
 
 ##Getting started
+```
+# Clone into your computer
+> git clone https://github.com/EdsonAlcala/generator-es6-gulp-angular.git
+# Go to the main folder and in order to used in your computer run
+> npm link
+```
 
-* Install: npm install -g generator-es6-gulp-angular
-* Run: yo es6-gulp-angular
+Now the generator will be available in your computer, run
+> yo es6-gulp-angular
 
 ##Commands
+> Gulp 
+> Gulp component --name componentName
 
 ##What do you get?
 
-##Description
-
+* Install: npm install -g generator-es6-gulp-angular
+* Run: yo es6-gulp-angular
 ##Contributing
 
 ##License
