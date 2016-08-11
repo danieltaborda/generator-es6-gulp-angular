@@ -17,14 +17,8 @@ Now the generator will be available in your computer, run
 > yo es6-gulp-angular
 
 ##Commands
+```
 > gulp 
+
 > gulp component --name componentName
-
-##What do you get?
-
-* Install: npm install -g generator-es6-gulp-angular
-* Run: yo es6-gulp-angular
-##Contributing
-
-##License
-
+```
